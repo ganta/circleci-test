@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: alpine
+    steps:
+      - run: |
+          if [ "x$CIRCLE_PULL_REQUESTS" = "x" ]
+          then
+            false
+          else
+            true
+          fi
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
